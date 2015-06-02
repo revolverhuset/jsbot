@@ -16,7 +16,12 @@ process.stdout.write = process.stderr.write = function(data) {
 
 app.post('/', function(req, res) {
   if (!req.body.text) return res.send(400, 'undefined');
-  console.log(eval(req.body.text));
+  try {
+    (function(t) {
+      console.log(eval.apply(this, arguments));
+    })(req.body.text);
+  } catch(e) {
+  }
   res.sendStatus(204);
 });
 

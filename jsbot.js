@@ -20,6 +20,7 @@ process.stderr.on('data', function(data) {
 app.post('/', function(req, res) {
   if (!req.body.text) return res.send(400, 'undefined');
   console.log(eval(req.body.text));
+  res.sendStatus(204);
 });
 
 app.listen(app.get('port'), function() { });

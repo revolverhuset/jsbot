@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 process.stdout.write = process.stderr.write = function(data) {
-  request.post(hookUrl, { form: JSON.stringify({ text:"`" + data + "`" }) }, function(err, resp, body) { });
+  request.post(hookUrl, { form: JSON.stringify({ text: data  }) }, function(err, resp, body) { });
 };
 
 app.post('/', function(req, res) {

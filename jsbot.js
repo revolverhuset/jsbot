@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 process.stdout.write = process.stderr.write = function(data) {
-  request.post(hookUrl, { form: JSON.stringify({ text: data }) }, function(err, resp, body) { });
+  request.post(hookUrl, { form: JSON.stringify({ text:"`" + data + "`" }) }, function(err, resp, body) { });
 };
 
 app.post('/', function(req, res) {
@@ -20,7 +20,7 @@ app.post('/', function(req, res) {
   console.log((req.body.user_name || 'undefined') + ": `" + req.body.text + "`");
   try {
     (function(t) {
-      console.log(eval.apply(this, arguments));
+      eval.apply(this, arguments);
     })(req.body.text);
   } catch(e) {
   }

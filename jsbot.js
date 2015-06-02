@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var randyCommands = require('./randy-commands');
 var request = require('request');
 var fs = require('fs');
 var app = express();

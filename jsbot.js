@@ -16,6 +16,7 @@ process.stdout.write = process.stderr.write = function(data) {
 
 app.post('/', function(req, res) {
   if (!req.body.text) return res.send(400, 'undefined');
+  console.log((req.body.user_name || 'undefined') + ": `" + req.body.text + "`");
   try {
     (function(t) {
       console.log(eval.apply(this, arguments));

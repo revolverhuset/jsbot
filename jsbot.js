@@ -23,6 +23,7 @@ app.post('/', function(req, res) {
       eval.apply(this, arguments);
     })(req.body.text);
   } catch(e) {
+    console.log(e)
   }
   res.sendStatus(204);
 });
